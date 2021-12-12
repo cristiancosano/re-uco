@@ -13,7 +13,7 @@ class administradorMaquinas : public usuario{
         
     public:
         
-        bool añadirMaquina();
+        bool anadirMaquina();
         bool eliminarMaquina();
         bool eliminarMaquina();
     };
