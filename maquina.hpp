@@ -17,7 +17,7 @@ class maquina{
     public:
         
         inline void setId(int id){this->id = id;}
-        inline int getnumeroCPU(){return this->id;}
+        inline int getId(){return this->id;}
         inline void setnumeroCPU(int numeroCPU){this->numeroCPU = numeroCPU;}
         inline int getnumeroCPU(){return this->numeroCPU;}
         inline void setRam(int ram){this->ram = ram;}
