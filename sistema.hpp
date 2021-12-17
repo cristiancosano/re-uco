@@ -11,9 +11,9 @@ class Sistema
 
 private:
 
-vector <usuario> usuarios;
-vector <reserva> reservas;
-vector <maquina> maquinas;
+vector <Usuario> usuarios;
+vector <Reserva> reservas;
+vector <Maquina> maquinas;
 
 
 protected:
@@ -31,12 +31,12 @@ public:
     void operator=(const Sistema &) = delete;
     static Sistema *GetInstance();
 
-    inline void setUsuarios(vector <usuario> usuarios){this->usuarios = usuarios;}
-    inline vector <usuario> getUsuarios(){return this->usuarios;}
-    inline void setReservas(vector <reserva> reservas){this->reservas = reservas;}
-    inline vector <reserva> getReservas(){return this->reservas;}
-    inline void setMaquinas(vector <maquina> maquinas){this->maquinas = maquinas;}
-    inline vector <maquina> getMaquinas(){return this->maquinas;}
+    inline void setUsuarios(vector <Usuario> usuarios){this->usuarios = usuarios;}
+    inline vector <Usuario> getUsuarios(){return this->usuarios;}
+    inline void setReservas(vector <Reserva> reservas){this->reservas = reservas;}
+    inline vector <Reserva> getReservas(){return this->reservas;}
+    inline void setMaquinas(vector <Maquina> maquinas){this->maquinas = maquinas;}
+    inline vector <Maquina> getMaquinas(){return this->maquinas;}
 
     void leerFichero();
     void escribirFichero();

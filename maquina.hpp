@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class maquina{
+class Maquina{
 
     private:
         

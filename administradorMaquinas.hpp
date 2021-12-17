@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class administradorMaquinas : public usuario{
+class administradorMaquinas : public Usuario{
 
     private:
         

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class reserva{
+class Reserva{
 
     private:
         
@@ -17,7 +17,7 @@ class reserva{
 
     public:
         
-    reserva(int numeroCPU, string fechainicio, string fechafin, int idMaquina, string motivo){
+    Reserva(int numeroCPU, string fechainicio, string fechafin, int idMaquina, string motivo){
 
         this->numeroCPU = numeroCPU;
         this->fechainicio = fechainicio;
@@ -36,6 +36,10 @@ class reserva{
     inline int getidMaquina(){return this->idMaquina;}
     inline void setMotivo(string motivo){this->motivo = motivo;}
     inline string getMotivo(){return this->motivo;}
+
+    bool realizarReserva();
+    bool eliminarReserva();
+
 };
 
 #endif 
