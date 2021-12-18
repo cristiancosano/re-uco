@@ -63,10 +63,10 @@ void menu(){
 int main(int argc, const char * argv[]) {
 	cout<<"====== RE-UCO ======"<<endl<<endl;
 
-	Maquina * maquina = new Maquina(1, 2, 3, "Windows");
+	Maquina * maquina = new Maquina(1, 2, 3, "Linux");
 	MaquinaModel * md = MaquinaModel::getInstance();
-	cout << *md->getById(3);
-	//md->create(maquina);
+	//cout << *md->getById(3);
+	md->create(maquina);
 
 	//Sistema * sistema = Sistema::getInstance();
 

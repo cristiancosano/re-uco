@@ -39,6 +39,7 @@ class Maquina{
         inline int getRam(){return this->ram;}
         inline void setfechaInicio(string sistemaOperativo){this->sistemaOperativo = sistemaOperativo;}
         inline string getSistemaOperativo(){return this->sistemaOperativo;}
+        inline bool isEmpty(){return this->id==0 && this->numeroCPU==0 && this->ram==0 && this->sistemaOperativo.length()==0;}
     	friend ostream& operator << (ostream &out, const Maquina &m);
     	friend istream& operator >> (istream &in, Maquina &m);
 	};

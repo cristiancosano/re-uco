@@ -73,6 +73,17 @@ public:
 	inline int getLimiteReserva() {return this->limiteReserva;}
 	inline void setLimiteTiempo(int limiteTiempo) {this->limiteTiempo = limiteTiempo;}
 	inline int getLimiteTiempo() {return this->limiteTiempo;}
+    inline bool isEmpty(){
+    	return this->limiteCPU==0
+    			&& this->limiteReserva==0
+				&& this->limiteTiempo == 0
+				&& this->nombre.length()==0
+				&& this->mail.length()==0
+				&& this->password.length()==0
+				&& this->institucion.length()==0
+				&& this->rol.length()==0;
+    }
+
 
 	Usuario buscarUsuario();
 	bool iniciarSesion();

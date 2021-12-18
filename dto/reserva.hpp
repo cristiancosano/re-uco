@@ -47,6 +47,8 @@ class Reserva{
     inline int getidMaquina(){return this->idMaquina;}
     inline void setMotivo(string motivo){this->motivo = motivo;}
     inline string getMotivo(){return this->motivo;}
+    inline bool isEmpty(){return this->numeroCPU==0 && this->idMaquina==0 && this->motivo.length()==0 && this->fechaInicio.length()==0 && this->fechaFin.length()==0;}
+
 
     bool realizarReserva();
     bool eliminarReserva();
