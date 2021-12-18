@@ -2,9 +2,9 @@
 #define SISTEMA_HPP
 
 #include <vector>
-#include "usuario.hpp"
-#include "reserva.hpp"
-#include "maquina.hpp"
+#include "dto/usuario.hpp"
+#include "dto/reserva.hpp"
+#include "dto/maquina.hpp"
 
 class Sistema
 {
@@ -29,7 +29,7 @@ public:
 
     Sistema(Sistema &other) = delete;
     void operator=(const Sistema &) = delete;
-    static Sistema *GetInstance();
+    static Sistema *getInstance();
 
     inline void setUsuarios(vector <Usuario> usuarios){this->usuarios = usuarios;}
     inline vector <Usuario> getUsuarios(){return this->usuarios;}
@@ -40,18 +40,12 @@ public:
 
     void leerFichero();
     void escribirFichero();
+    Reserva * getReservaByIdMaquina(int idMaquina);
+    Usuario * getUsuarioByEmail(string email);
+
+
 
 };
-
-Sistema *Sistema::GetInstance(){
-
-    if(sistema==nullptr){
-
-        sistema = new Sistema();
-    }
-
-    return sistema;
-}
 
 
 #endif
