@@ -1,12 +1,6 @@
 #include "usuario.hpp"
 #include "reserva.hpp"
 
-
-bool Usuario::iniciarSesion(){
-	return true;
-}
-
-
 ostream& operator << (ostream &out, const Usuario &u){
 	const string delimiter = ", ";
 	out << "(" << u.nombre << delimiter << u.mail << delimiter << u.password << delimiter << u.institucion << delimiter << u.rol << delimiter << u.limiteCPU << delimiter << u.limiteReserva << delimiter << u.limiteTiempo << ")";

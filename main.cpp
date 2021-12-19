@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "dto/date.hpp"
+#include "common/date.hpp"
 #include "dto/usuario.hpp"
 #include "dto/reserva.hpp"
 #include "models/MaquinaModel.h"
@@ -179,26 +179,11 @@ void menu(Usuario * user){
 int main(int argc, const char * argv[]) {
 	cout<<"====== RE-UCO ======"<<endl<<endl;
 
-	/*Maquina * maquina = new Maquina(1, 2, 3, "Linux");
-	MaquinaModel * md = MaquinaModel::getInstance();*/
-	//cout << *md->getById(3);
-	/*md->create(maquina);*/
-
-	//Reserva * reserva = new Reserva(2, "2000-6-3", "2000-6-5", 1, "Prueba", "i82gapop@uco.es");
-	//ReservaModel * rm = ReservaModel::getInstance();
-	//cout << *rm->getById(3);
-	//rm->create(reserva);
-
-	Usuario * pedro = new Usuario("Pedro", "i82gapop@uco.es", "Abc12", "UCO", "Investigador", 2, 3, 2);
-	UsuarioModel * um = UsuarioModel::getInstance();
-	//um->create(pedro);
-
 	Usuario * user = nullptr;
-
 
 	while(user == nullptr){
 		user = getUsuario();
-		cout << endl << ((user == nullptr) ? "Datos incorrectos. Intentelo de nuevo" : "Usuario autenticado. Bienvenido") << endl << endl;
+		cout << endl << ((user == nullptr) ? "Datos incorrectos. Intentelo de nuevo" :"Bienvenido " + user->getNombre() + " nos alegra tenerte aqui de nuevo!") << endl << endl;
 	}
 
 	menu(user);

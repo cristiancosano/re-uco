@@ -85,8 +85,6 @@ public:
     }
 
 
-	Usuario buscarUsuario();
-	bool iniciarSesion();
 	bool obtenerRol();
 
 	friend ostream& operator << (ostream &out, const Usuario &u);
