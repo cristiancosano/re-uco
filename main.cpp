@@ -1,8 +1,10 @@
 #include <iostream>
+#include <vector>
 #include "dto/usuario.hpp"
 #include "dto/reserva.hpp"
-#include "sistema.hpp"
 #include "models/MaquinaModel.h"
+#include "models/ReservaModel.h"
+
 using namespace std;
 
 Usuario * getUsuario(){
@@ -18,9 +20,40 @@ Usuario * getUsuario(){
 }
 
 void realizarReserva(){
-	//int numeroCPU, idMaquina;
-	//string fechaInicio, fechaFin, motivo;
-	//Reserva * reserva = new Reserva(numeroCPU, fechaInicio, fechaFin, idMaquina, motivo);
+	
+	Usuario * user = new Usuario("Pedro", "i82gapop@uco.es", "Abc12", "UCO", "Investigador", 2, 3, 2);
+
+	ReservaModel * rm = ReservaModel::getInstance();
+
+	if (rm->getByUser(user->getMail()) >= user->getLimiteReserva()){
+		
+		cout << "Su cupo de reservas ha sido superado, debe hacer hueco antes de hacer otra reserva." << endl;
+		return;
+	}	
+
+	cout << "Introduce el dia para el que quieres la reserva: " << endl;
+	string day;
+	cin >> day;
+
+	cout << "Introduce el numero del mes para el que quieres la reserva: " << endl;
+	string month;
+	cin >> month;
+	
+	cout << "Introduce el numero del año (en cuatro digitos) para el que quieres la reserva: " << endl;
+	string year;
+	cin >> year;
+
+	cout << "Introduce el numero de dias que quieres tener la maquina: " << endl;
+	int duracion;
+	cin >> duracion;
+
+	MaquinaModel * md = MaquinaModel::getInstance();
+
+	vector <Maquina> maquinas = md->getAll();
+
+	for(auto &element : maquinas)
+
+		cout << element << endl;
 
 }
 
@@ -63,12 +96,10 @@ void menu(){
 int main(int argc, const char * argv[]) {
 	cout<<"====== RE-UCO ======"<<endl<<endl;
 
-	Maquina * maquina = new Maquina(1, 2, 3, "Linux");
-	MaquinaModel * md = MaquinaModel::getInstance();
+	/*Maquina * maquina = new Maquina(1, 2, 3, "Linux");
+	MaquinaModel * md = MaquinaModel::getInstance();*/
 	//cout << *md->getById(3);
-	md->create(maquina);
-
-	//Sistema * sistema = Sistema::getInstance();
+	/*md->create(maquina);*/
 
 	Usuario * user = NULL;
 

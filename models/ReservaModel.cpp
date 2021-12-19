@@ -13,4 +13,20 @@ void ReservaModel::create(Reserva * reserva){
 	this->storeData();
 }
 
+int ReservaModel::getByUser(string user){
 
+	int contador = 0;
+
+	for(auto &element : this->data)
+		if(element.getUsuario() == user) contador++;
+	return contador;
+}
+
+int ReservaModel::getBy(string user){
+
+	int contador = 0;
+
+	for(auto &element : this->data)
+		if(element.getUsuario() == user) contador++;
+	return contador;
+}

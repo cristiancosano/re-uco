@@ -11,6 +11,7 @@ class ReservaModel: protected Model<Reserva> {
 	public:
 		static ReservaModel * getInstance();
 		void create(Reserva * reserva);
+		int getByUser(string user);
 };
 
 #endif /* MODELS_RESERVAMODEL_H_ */
