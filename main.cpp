@@ -5,6 +5,7 @@
 #include "dto/reserva.hpp"
 #include "models/MaquinaModel.h"
 #include "models/ReservaModel.h"
+#include "models/UsuarioModel.h"
 
 using namespace std;
 
@@ -16,13 +17,14 @@ Usuario * getUsuario(){
 	cout<<"Introduce tu password: ";
 	cin>>password;
 
-	Usuario * user = new Usuario(mail, password);
+	UsuarioModel * um = UsuarioModel::getInstance();
+	Usuario * user = um->login(mail, password);
 	return user;
 }
 
-void realizarReserva(){
+void realizarReserva(Usuario * user){
 	
-	Usuario * user = new Usuario("Pedro", "i82gapop@uco.es", "Abc12", "UCO", "Investigador", 2, 3, 2);
+	//Usuario * user = new Usuario("Pedro", "i82gapop@uco.es", "Abc12", "UCO", "Investigador", 2, 3, 2);
 
 	ReservaModel * rm = ReservaModel::getInstance();
 
@@ -123,7 +125,22 @@ void realizarReserva(){
 	cout << "La reserva ha sido creada con exito." << endl;
 }
 
-void menu(){
+void mostrarReservas(Usuario * user){
+	if(user->getRol() == "administradorMaquinas"){
+		// Se permite que elija cualquier reserva
+
+	}
+	else{
+		// Solo se muestran sus reservas
+		MaquinaModel * mm = MaquinaModel::getInstance();
+
+	}
+}
+void eliminarReserva(){
+
+}
+
+void menu(Usuario * user){
 	int opcion = 0;
 	while(opcion != 3){
 		cout << "=== MENU PRINCIPAL ===" << endl;
@@ -137,7 +154,7 @@ void menu(){
 		switch(opcion){
 			case 1:
 				cout << endl;
-				realizarReserva();
+				realizarReserva(user);
 				cout << endl;
 				break;
 			case 2:
@@ -172,15 +189,17 @@ int main(int argc, const char * argv[]) {
 	//cout << *rm->getById(3);
 	//rm->create(reserva);
 
-	Usuario * user = NULL;
+	Usuario * pedro = new Usuario("Pedro", "i82gapop@uco.es", "Abc12", "UCO", "Investigador", 2, 3, 2);
+	UsuarioModel * um = UsuarioModel::getInstance();
+	//um->create(pedro);
 
-	bool isValidUser = false;
+	Usuario * user = nullptr;
 
-	while(!isValidUser){
+
+	while(user == nullptr){
 		user = getUsuario();
-		isValidUser = user->iniciarSesion();
-		cout << endl << ((!isValidUser) ? "Datos incorrectos. Intentelo de nuevo" : "Usuario autenticado. Bienvenido") << endl << endl;
+		cout << endl << ((user == nullptr) ? "Datos incorrectos. Intentelo de nuevo" : "Usuario autenticado. Bienvenido") << endl << endl;
 	}
 
-	menu();
+	menu(user);
 }

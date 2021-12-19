@@ -12,6 +12,7 @@ class UsuarioModel: protected Model<Usuario> {
 		static UsuarioModel * getInstance();
 		Usuario * getByMail(string mail);
 		void create(Usuario * usuario);
+		Usuario * login(string mail, string password);
 };
 
 #endif /* MODELS_USUARIOMODEL_H_ */
