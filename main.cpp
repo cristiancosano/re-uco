@@ -1,8 +1,11 @@
 #include <iostream>
+#include <vector>
+#include "dto/date.hpp"
 #include "dto/usuario.hpp"
 #include "dto/reserva.hpp"
-#include "sistema.hpp"
 #include "models/MaquinaModel.h"
+#include "models/ReservaModel.h"
+
 using namespace std;
 
 Usuario * getUsuario(){
@@ -18,10 +21,106 @@ Usuario * getUsuario(){
 }
 
 void realizarReserva(){
-	//int numeroCPU, idMaquina;
-	//string fechaInicio, fechaFin, motivo;
-	//Reserva * reserva = new Reserva(numeroCPU, fechaInicio, fechaFin, idMaquina, motivo);
+	
+	Usuario * user = new Usuario("Pedro", "i82gapop@uco.es", "Abc12", "UCO", "Investigador", 2, 3, 2);
 
+	ReservaModel * rm = ReservaModel::getInstance();
+
+	if (rm->getByUser(user->getMail()) >= user->getLimiteReserva()){
+		
+		cout << "Su cupo de reservas ha sido superado, debe hacer hueco antes de hacer otra reserva." << endl;
+		return;
+	}	
+
+	cout << "Introduce el dia para el que quieres la reserva: " << endl;
+	int day;
+	cin >> day;
+
+	cout << "Introduce el numero del mes para el que quieres la reserva: " << endl;
+	int month;
+	cin >> month;
+	
+	cout << "Introduce el numero del año (en cuatro digitos) para el que quieres la reserva: " << endl;
+	int year;
+	cin >> year;
+
+	Date fecha(year, month, day);
+	Date fecha2 = fecha;
+
+	cout << "Introduce el numero de dias que quieres tener la maquina: " << endl;
+	int duracion;
+	cin >> duracion;
+
+	fecha2+=(duracion);
+
+	if(duracion > user->getLimiteTiempo()){
+
+		cout << "Su tiempo de reserva elegido es mayor del limite establecido para su usuario." << endl;
+		return;
+	}
+
+	cout << "Introduce el numero de CPU's que quiere usar: " << endl;
+	int cpu;
+	cin >> cpu;
+
+	if(cpu > user->getLimiteCPU()){
+
+		cout << "Su numero de cpu elegido es mayor del limite establecido para su usuario." << endl;
+		return;
+	}
+
+	vector <Reserva> reservas = rm->getByDate(fecha.toString());
+
+	MaquinaModel * md = MaquinaModel::getInstance();
+
+	vector <Maquina> maquinas = md->getAll();
+
+	for(auto &element : reservas){
+
+		for(auto &element2 : maquinas){
+
+			if(element.getidMaquina() == element2.getId()){
+
+				element2.setNumeroCPU(element2.getNumeroCPU()-element.getnumeroCPU());
+			}
+		}
+	}
+
+	vector <Maquina> maquinasdisponibles;
+	int contador = 0;
+
+	cout << "Las maquinas disponibles para reservar en ese dia son las siguientes: " << endl;
+
+	for(auto &element : maquinas){
+
+		if(element.getNumeroCPU() >= cpu){
+			
+			maquinasdisponibles.push_back(element);
+			cout << contador+1 << ". " << element << endl;
+			contador++;
+		}	
+	}
+
+	cout << "\nElija el numero de la maquina que quiere reservar: " << endl;
+	int maquina;
+	cin >> maquina;
+
+	if(maquina > maquinasdisponibles.size()){
+
+		cout << "La maquina que ha elegido no existe." << endl;
+		return;
+	}
+
+	cout << "Por ultimo introduzca el motivo de la reserva: " << endl;
+	string motivo;
+
+	getchar();
+	getline(cin, motivo);
+
+	Reserva * reserva = new Reserva(cpu, fecha.toString(), fecha2.toString(), maquinasdisponibles[maquina-1].getId(), motivo, user->getMail());
+	rm->create(reserva);
+
+	cout << "La reserva ha sido creada con exito." << endl;
 }
 
 void menu(){
@@ -63,12 +162,15 @@ void menu(){
 int main(int argc, const char * argv[]) {
 	cout<<"====== RE-UCO ======"<<endl<<endl;
 
-	Maquina * maquina = new Maquina(1, 2, 3, "Linux");
-	MaquinaModel * md = MaquinaModel::getInstance();
+	/*Maquina * maquina = new Maquina(1, 2, 3, "Linux");
+	MaquinaModel * md = MaquinaModel::getInstance();*/
 	//cout << *md->getById(3);
-	md->create(maquina);
+	/*md->create(maquina);*/
 
-	//Sistema * sistema = Sistema::getInstance();
+	//Reserva * reserva = new Reserva(2, "2000-6-3", "2000-6-5", 1, "Prueba", "i82gapop@uco.es");
+	//ReservaModel * rm = ReservaModel::getInstance();
+	//cout << *rm->getById(3);
+	//rm->create(reserva);
 
 	Usuario * user = NULL;
 

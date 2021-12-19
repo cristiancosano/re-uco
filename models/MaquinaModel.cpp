@@ -18,3 +18,13 @@ Maquina * MaquinaModel::getById(int id){
 		if(element.getId() == id) return &element;
 	return nullptr;
 }
+
+vector <Maquina> MaquinaModel::getAll(){
+
+	vector <Maquina> maquinas;
+
+	for(auto &element : this->data)
+		maquinas.push_back(element);
+
+	return maquinas;
+}

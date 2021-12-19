@@ -17,6 +17,7 @@ class Reserva{
     string fechaFin;
     int idMaquina;
     string motivo;
+    string usuario;
 
     public:
 
@@ -26,15 +27,17 @@ class Reserva{
 		this->fechaFin = "";
 		this->idMaquina = 0;
 		this->motivo = "";
+        this->usuario = "";
     }
         
-    Reserva(int numeroCPU, string fechaInicio, string fechaFin, int idMaquina, string motivo){
+    Reserva(int numeroCPU, string fechaInicio, string fechaFin, int idMaquina, string motivo, string usuario){
 
         this->numeroCPU = numeroCPU;
         this->fechaInicio = fechaInicio;
         this->fechaFin = fechaFin;
         this->idMaquina = idMaquina;
         this->motivo = motivo;
+        this->usuario = usuario;
     }
 
     inline void setnumeroCPU(int numeroCPU){this->numeroCPU = numeroCPU;}
@@ -47,7 +50,9 @@ class Reserva{
     inline int getidMaquina(){return this->idMaquina;}
     inline void setMotivo(string motivo){this->motivo = motivo;}
     inline string getMotivo(){return this->motivo;}
-    inline bool isEmpty(){return this->numeroCPU==0 && this->idMaquina==0 && this->motivo.length()==0 && this->fechaInicio.length()==0 && this->fechaFin.length()==0;}
+    inline void setUsuario(string usuario){this->motivo = motivo;}
+    inline string getUsuario(){return this->usuario;}
+    inline bool isEmpty(){return this->numeroCPU==0 && this->idMaquina==0 && this->motivo.length()==0 && this->fechaInicio.length()==0 && this->fechaFin.length()==0 && this->usuario.length()==0;}
 
 
     bool realizarReserva();

@@ -27,10 +27,10 @@ class Model {
 					element = new T();
 				}
 				input.close();
-				cout<<"Datos cargados"<<endl;
+				/*cout<<"Datos cargados"<<endl;
 				for (auto element : data){
 					cout<<element<<endl;
-				}
+				}*/
 			}
 		}
 
@@ -39,10 +39,10 @@ class Model {
 			output.open(this->filename, ios_base::out | ios_base::trunc);
 			if(output.fail())
 			  cerr << "Unable to open the file" << endl;
-			cout<<"Datos a guardar"<<endl;
+			/*cout<<"Datos a guardar"<<endl;
 			for (auto element : data){
 				cout<<element<<endl;
-			}
+			}*/
 			for(auto element = data.begin(); element != data.end(); element++){
 				output << *element;
 				if(element != data.end()) output << endl;
