@@ -22,11 +22,12 @@ int ReservaModel::getByUser(string user){
 	return contador;
 }
 
-int ReservaModel::getBy(string user){
+vector <Reserva> ReservaModel::getByDate(string date){
 
-	int contador = 0;
+	vector <Reserva> reservas;
 
 	for(auto &element : this->data)
-		if(element.getUsuario() == user) contador++;
-	return contador;
+		if(element.getfechaInicio() == date) reservas.push_back(element);
+		
+	return reservas;
 }

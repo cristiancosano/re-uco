@@ -1,0 +1,2 @@
+(2, 2000-6-3, 2000-6-5, 1, Prueba, i82gapop@uco.es)
+(2, 2000-6-3, 2000-6-5, 2, Prueba de motivo de reserva, i82gapop@uco.es)
