@@ -119,9 +119,10 @@ void realizarReserva(Usuario * user){
 	getchar();
 	getline(cin, motivo);
 
-	int id = 1;
+	reservas = rm->getAll();
+	int id = reservas.back().getId();
 
-	Reserva * reserva = new Reserva(id, cpu, fecha.toString(), fecha2.toString(), maquinasdisponibles[maquina-1].getId(), motivo, user->getMail());
+	Reserva * reserva = new Reserva(id+1, cpu, fecha.toString(), fecha2.toString(), maquinasdisponibles[maquina-1].getId(), motivo, user->getMail());
 	rm->create(reserva);
 
 	cout << "La reserva ha sido creada con exito." << endl;
