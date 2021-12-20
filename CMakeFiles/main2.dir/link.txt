@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/main2.dir/tests.cpp.o CMakeFiles/main2.dir/dto/maquina.cpp.o CMakeFiles/main2.dir/dto/reserva.cpp.o CMakeFiles/main2.dir/dto/usuario.cpp.o CMakeFiles/main2.dir/models/MaquinaModel.cpp.o CMakeFiles/main2.dir/models/ReservaModel.cpp.o CMakeFiles/main2.dir/models/UsuarioModel.cpp.o CMakeFiles/main2.dir/common/date.cpp.o -o main2 
