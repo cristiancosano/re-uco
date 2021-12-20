@@ -1,5 +1,5 @@
 #include "ReservaModel.h"
-#include "common/date.hpp"
+#include "../common/date.hpp"
 
 ReservaModel * ReservaModel::instance = nullptr;
 
@@ -39,7 +39,7 @@ vector <Reserva> ReservaModel::getReservasByUser(string user){
 	vector <Reserva> reservas;
 
 	for(auto &element : this->data)
-		if(element.getUsuario == user) reservas.push_back(element);
+		if(element.getUsuario() == user) reservas.push_back(element);
 
 	return reservas;
 }
@@ -56,9 +56,12 @@ vector <Reserva> ReservaModel::getAll(){
 
 void ReservaModel::remove(int id){
 
+    vector<Reserva>::iterator it;
+    it = data.begin();
+
 	for(int i=0; i < this->data.size(); i++){
 		if(id == data[i].getId()){
-			data.erase(&data[i]);
+			data.erase(it);
 		}
 	}
 

@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <vector>
 #include "common/date.hpp"
@@ -6,6 +7,11 @@
 #include "models/MaquinaModel.h"
 #include "models/ReservaModel.h"
 #include "models/UsuarioModel.h"
+#include "cute/cute.h"
+#include "cute/cute_runner.h"
+#include "cute/xml_listener.h"
+#include "cute/ide_listener.h"
+
 
 using namespace std;
 
@@ -29,8 +35,9 @@ void testFecha2() {
 
 bool runAllTests(int argc, char const *argv[]) {
 
-	cute::suite s { };
-	s.push_back(CUTE(testFecha));
+	cute::suite s;
+	s.push_back(CUTE(testFecha1));
+	s.push_back(CUTE(testFecha2));
 	cute::xml_file_opener xmlfile(argc, argv);
 	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
 	auto runner = cute::makeRunner(lis, argc, argv);

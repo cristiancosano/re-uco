@@ -156,7 +156,6 @@ void mostrarReservas(Usuario * user){
 }
 void eliminarReserva(Usuario * user){
 
-	MaquinaModel * mm = MaquinaModel::getInstance();
 	ReservaModel * rm = ReservaModel::getInstance();
 	vector <Reserva> reservas;
 
@@ -178,7 +177,7 @@ void eliminarReserva(Usuario * user){
 	}else{
 
 		int idReserva;
-		reservas = rm->getByUser(user->getNombre())();
+		reservas = rm->getReservasByUser(user->getNombre());
 		cout << "Introduce el id de la reserva que desea eliminar: ";
 
 		for(int i = 0; i < reservas.size(); i++){
