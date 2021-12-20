@@ -53,6 +53,7 @@ class Model {
 
 			output.close();
 		}
+
 	public:
 		Model(string filename){
 			this->filename = filename;

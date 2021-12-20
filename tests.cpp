@@ -27,7 +27,6 @@ void testFecha2() {
 }
 
 
-
 bool runAllTests(int argc, char const *argv[]) {
 
 	cute::suite s { };

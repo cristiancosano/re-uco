@@ -119,24 +119,75 @@ void realizarReserva(Usuario * user){
 	getchar();
 	getline(cin, motivo);
 
-	Reserva * reserva = new Reserva(cpu, fecha.toString(), fecha2.toString(), maquinasdisponibles[maquina-1].getId(), motivo, user->getMail());
+	int id = 1;
+
+	Reserva * reserva = new Reserva(id, cpu, fecha.toString(), fecha2.toString(), maquinasdisponibles[maquina-1].getId(), motivo, user->getMail());
 	rm->create(reserva);
 
 	cout << "La reserva ha sido creada con exito." << endl;
 }
 
 void mostrarReservas(Usuario * user){
+
+	MaquinaModel * mm = MaquinaModel::getInstance();
+	ReservaModel * rm = ReservaModel::getInstance();
+	vector <Reserva> reservas;
+
 	if(user->getRol() == "administradorMaquinas"){
-		// Se permite que elija cualquier reserva
+
+		reservas = rm->getAll();
+
+		for(int i = 0; i < reservas.size(); i++){
+			cout << "Reserva del usuario: " + reservas[i].getUsuario() + ", Fecha inicio: " + reservas[i].getfechaInicio() + " , Fecha fin : " + reservas[i].getfechaFin()  << endl;
+		}
 
 	}
 	else{
-		// Solo se muestran sus reservas
-		MaquinaModel * mm = MaquinaModel::getInstance();
+
+		reservas = rm->getReservasByUser(user->getNombre());
+		cout << "Introduce el id de la reserva que desea eliminar: ";
+
+		for(int i = 0; i < reservas.size(); i++){
+			cout << "Reserva del usuario: " + reservas[i].getUsuario() + ", Fecha inicio: " + reservas[i].getfechaInicio() + " , Fecha fin : " + reservas[i].getfechaFin()  << endl;
+		}
 
 	}
 }
-void eliminarReserva(){
+void eliminarReserva(Usuario * user){
+
+	MaquinaModel * mm = MaquinaModel::getInstance();
+	ReservaModel * rm = ReservaModel::getInstance();
+	vector <Reserva> reservas;
+
+
+	if(user->getRol() == "administradorMaquinas"){
+
+		int idReserva;
+		reservas = rm->getAll();
+		cout << "Introduce el id de la reserva que desea eliminar: ";
+
+		for(int i = 0; i < reservas.size(); i++){
+			cout << "Reserva del usuario: " + reservas[i].getUsuario() + ", Fecha inicio: " + reservas[i].getfechaInicio() + " , Fecha fin : " + reservas[i].getfechaFin()  << endl;
+		}
+
+		cin >> idReserva;
+
+		rm->remove(idReserva);
+
+	}else{
+
+		int idReserva;
+		reservas = rm->getByUser(user->getNombre())();
+		cout << "Introduce el id de la reserva que desea eliminar: ";
+
+		for(int i = 0; i < reservas.size(); i++){
+			cout << "Reserva del usuario: " + reservas[i].getUsuario() + ", Fecha inicio: " + reservas[i].getfechaInicio() + " , Fecha fin : " + reservas[i].getfechaFin()  << endl;
+		}
+
+		cin >> idReserva;
+
+		rm->remove(idReserva);
+	}
 
 }
 

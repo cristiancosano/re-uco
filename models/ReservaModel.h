@@ -11,9 +11,11 @@ class ReservaModel: protected Model<Reserva> {
 	public:
 		static ReservaModel * getInstance();
 		void create(Reserva * reserva);
+		void remove(int id);
 		int getByUser(string user);
+		vector <Reserva> getAll();
 		vector <Reserva> getByDate(string date);
-		
+		vector <Reserva> getReservasByUser(string user);
 };
 
 #endif /* MODELS_RESERVAMODEL_H_ */

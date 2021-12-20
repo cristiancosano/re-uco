@@ -11,7 +11,8 @@ using namespace std;
 class Reserva{
 
     private:
-        
+
+	int id;
     int numeroCPU;
     string fechaInicio;
     string fechaFin;
@@ -22,6 +23,7 @@ class Reserva{
     public:
 
     Reserva(){
+    	this->id = 0;
     	this->numeroCPU = 0;
 		this->fechaInicio = "";
 		this->fechaFin = "";
@@ -30,8 +32,8 @@ class Reserva{
         this->usuario = "";
     }
         
-    Reserva(int numeroCPU, string fechaInicio, string fechaFin, int idMaquina, string motivo, string usuario){
-
+    Reserva(int id, int numeroCPU, string fechaInicio, string fechaFin, int idMaquina, string motivo, string usuario){
+    	this->id = id;
         this->numeroCPU = numeroCPU;
         this->fechaInicio = fechaInicio;
         this->fechaFin = fechaFin;
@@ -40,6 +42,8 @@ class Reserva{
         this->usuario = usuario;
     }
 
+    inline void setId(int id){this->id = id;}
+    inline int getId(){return this->id;}
     inline void setnumeroCPU(int numeroCPU){this->numeroCPU = numeroCPU;}
     inline int getnumeroCPU(){return this->numeroCPU;}
     inline void setfechaInicio(string fechaInicio){this->fechaInicio = fechaInicio;}
