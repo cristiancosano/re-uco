@@ -61,6 +61,7 @@ class Reserva{
 
     bool realizarReserva();
     bool eliminarReserva();
+    bool mostrarReserva();
 
     friend ostream& operator << (ostream &out, const Reserva &r);
     friend istream& operator >> (istream &in, Reserva &r);

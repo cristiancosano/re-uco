@@ -81,7 +81,7 @@ void realizarReserva(Usuario * user){
 
 		for(auto &element2 : maquinas){
 
-			if(element.getidMaquina() == element2.getId()){
+			if(element.getId() == element2.getId()){
 
 				element2.setNumeroCPU(element2.getNumeroCPU()-element.getnumeroCPU());
 			}
@@ -119,10 +119,10 @@ void realizarReserva(Usuario * user){
 	getchar();
 	getline(cin, motivo);
 
-	reservas = rm->getAll();
-	int id = reservas.back().getId();
+	/*reservas = rm->getAll();
+	int id = reservas.back().getId();*/
 
-	Reserva * reserva = new Reserva(id+1, cpu, fecha.toString(), fecha2.toString(), maquinasdisponibles[maquina-1].getId(), motivo, user->getMail());
+	Reserva * reserva = new Reserva(1, cpu, fecha.toString(), fecha2.toString(), maquinasdisponibles[maquina-1].getId(), motivo, user->getMail());
 	rm->create(reserva);
 
 	cout << "La reserva ha sido creada con exito." << endl;
@@ -210,7 +210,7 @@ void menu(Usuario * user){
 				break;
 			case 2:
 				cout << endl;
-				cout<<"eliminar reserva" << endl;
+				eliminarReserva(user);
 				cout << endl;
 				break;
 			case 3:

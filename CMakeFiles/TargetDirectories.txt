@@ -1,0 +1,4 @@
+/home/maxtercubex/Descargas/is/re-uco-main/CMakeFiles/rebuild_cache.dir
+/home/maxtercubex/Descargas/is/re-uco-main/CMakeFiles/edit_cache.dir
+/home/maxtercubex/Descargas/is/re-uco-main/CMakeFiles/main2.dir
+/home/maxtercubex/Descargas/is/re-uco-main/CMakeFiles/main.dir

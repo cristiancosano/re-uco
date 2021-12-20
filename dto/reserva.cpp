@@ -2,7 +2,7 @@
 
 ostream& operator << (ostream &out, const Reserva &r){
 	const string delimiter = ", ";
-	out << "(" << r.numeroCPU << delimiter << r.fechaInicio << delimiter << r.fechaFin << delimiter << r.idMaquina << delimiter << r.motivo << delimiter << r.usuario << ")";
+	out << "(" << r.id << delimiter << r.numeroCPU << delimiter << r.fechaInicio << delimiter << r.fechaFin << delimiter << r.idMaquina << delimiter << r.motivo << delimiter << r.usuario << ")";
 	return out;
 }
 
@@ -25,12 +25,13 @@ istream& operator >> (istream &in, Reserva &r){
 			else element.erase(0);
 		}
 
-		r.numeroCPU = stoi(data[0]);
-		r.fechaInicio = data[1];
-		r.fechaFin = data[2];
-		r.idMaquina = stoi(data[3]);
-		r.motivo = data[4];
-		r.usuario = data[5];
+		r.id = stoi(data[0]);
+		r.numeroCPU = stoi(data[1]);
+		r.fechaInicio = data[2];
+		r.fechaFin = data[3];
+		r.idMaquina = stoi(data[4]);
+		r.motivo = data[5];
+		r.usuario = data[6];
 	}
 	return in;
 }
